@@ -1,0 +1,20 @@
+web:
+  build: .
+  links:
+    - db
+  ports:
+    - "80:80"
+  volumes:
+    - "/home/alucard/web:/var/www/html"
+  expose:
+    - "80"
+db:
+  image: "mysql:latest"
+  ports:
+    - "3306:3306"
+  expose:
+    - "3306"
+  volumes:
+    - "/home/alucard/web/mysql_data:/var/lib/mysql"
+  environment:
+    - MYSQL_ROOT_PASSWORD="root"
