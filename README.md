@@ -1,5 +1,5 @@
 # common-lamp
-<h2>Common Linux, Apache, MySQL and PHP settings</h2>
+<h2>Common Linux, Apache, MySQL and PHP Environment Setup for Docker</h2>
 
 <h3>What is it?</h3>
 
