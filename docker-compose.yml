@@ -5,16 +5,20 @@ web:
   ports:
     - "80:80"
   volumes:
-    - "./web:/var/www/html"
+    - "./html:/var/www/html"
   expose:
-    - "80"
+    - 80
 db:
   image: "mysql:latest"
   ports:
     - "3306:3306"
   expose:
-    - "3306"
+    - 3306
   volumes:
-    - "./web/mysql_data:/var/lib/mysql"
+    - "./mysql_data:/var/lib/mysql"
   environment:
-    - MYSQL_ROOT_PASSWORD="root"
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=sample
+    - MYSQL_USER=sample
+    - MYSQL_PASSWORD=sample
+    - MYSQL_ALLOW_EMPTY_PASSWORD=yes
