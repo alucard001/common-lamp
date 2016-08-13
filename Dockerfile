@@ -16,5 +16,15 @@ RUN   apt-get update && \
       && apt-get autoclean
 
 RUN a2enmod rewrite
-RUN service apache2 restart
+RUN a2enmod expires
+RUN a2enmod headers
 
+# Allow website to use .htaccess
+RUN printf "<Directory \"/var/www/html/\">\n\tAllowOverride All\n</Directory>\n" >> /etc/apache2/sites-available/000-default.conf
+
+RUN service apache2 stop
+
+WORKDIR /var/www/html
+
+EXPOSE 80
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
