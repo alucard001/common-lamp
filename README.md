@@ -14,22 +14,26 @@
 <p>This includes:</p>
 
 <ul>
-	<li>Linux</li>
-	<li>PHP (From official PHP v7 & Apache 2.4.10 docker image: 7-apache)</li>
+	<li>Linux (Ubuntu 16.04) </li>
+	<li>Apache 2.4 (Use apt-get install apache instead of using official image)</li>
+	<li>PHP 7 (Use apt-get to download PHP instead of using official image)</li>
 	<li>MySQL (From official MySQL docker image: mysql:latest)</li>
 </ul>
 
 <h2>Notes on Apache/PHP</h2>
 
 <ul>
-	<li>It is based on official PHP docker image (https://hub.docker.com/_/php/).  I am using tag "7-apache"</li>
-	<li>So it is using latest PHP 7 and latest Apache</li>
+	<li>I am using Ubuntu 16.04, and the Apache/PHP in Ubuntu official repo.  Because it is simpler to install/config/use, than using "official" image.</li>
+	<li>The main obstacle of NOT using official PHP docker image is that, if I want to install additional PHP modules, I need to use their custom commands instead of normal apt-get.  To me, using Ubuntu official apt-get command and download repo from them is much easier and safer.</li>
+	<li>Please read my Dockerfile, it is much simpler than before, and give you a general idea on what I did.</li>
+	<li>It is using latest PHP 7 and latest Apache</li>
 	<li>Web file directory in Apache container is /var/www/html</li>
 	<li>Web files are stored OUTSIDE the container.  By default (docker-compose.yml), you will have a html directory that saved all your files (Directory structure see below).</li>
 	<li>Docker host (the computer which you run "docker" command) opens port 80.</li>
 	<li>Apache container exposes port 80.</li>
 	<li>Visitor website traffic coming from docker host will be forward to apache container (80:80)</li>
 	<li>The name in YML is called "web", and it links to "db", which is the database (See below).</li>
+	<li>You may also see that I install Redis.  And yes, my plan is to use Redis to speed up the loading time.  One of my to-do item is to integrate Redis into this project.</li>
 </ul>
 
 <h2>Notes on MySQL</h2>
@@ -70,6 +74,7 @@
 <ul>
 	<li>I realise that the database expose may actually be unnecessary and will have potential security problem.</li>
 	<li>Add custom httpd.conf php.ini and my.cnf config files.</li>
+	<li>Use Redis to speedup loading website.  Yes you are right, I am using Wordpress on most of my project at this moment.</li>
 </ul>
 
 <h2>My comments:</h2>
