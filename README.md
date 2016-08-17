@@ -17,7 +17,7 @@
 	<li>Linux (Ubuntu 16.04) </li>
 	<li>Apache 2.4 (Use apt-get install apache instead of using official image)</li>
 	<li>PHP 7 (Use apt-get to download PHP instead of using official image)</li>
-	<li>MySQL (From official MySQL docker image: mysql:latest)</li>
+	<li>MySQL 5.7.14 (as of this writing, from official MySQL docker image: mysql:latest)</li>
 </ul>
 
 <h2>Notes on Apache/PHP</h2>
