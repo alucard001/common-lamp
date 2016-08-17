@@ -1,21 +1,23 @@
 web:
-  build: .
+  build: ./build/web/
   links:
     - db
   ports:
-    - "80:80"
+    - "8080:80"
   volumes:
     - "./html:/var/www/html"
+    - "./log_web/:/var/log/apache2"
   expose:
-    - 80
+    - 8080
 db:
-  image: "mysql:latest"
+  build: ./build/db/
   ports:
     - "3306:3306"
   expose:
     - 3306
   volumes:
     - "./mysql_data:/var/lib/mysql"
+    - "./log_db/:/var/log/mysql"
   environment:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=sample
